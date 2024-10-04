@@ -1,0 +1,53 @@
+.navbar {
+  padding: 30px 0;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .logo h2 {
+  font-size: 30px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: var(--main-color);
+}
+
+.container nav ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.container nav ul li a {
+  font-size: 18px;
+  color: var(--dark-color);
+}
+.container nav ul li a.active {
+  font-weight: 500;
+  color: var(--main-color);
+}
+
+.container .cart {
+  position: relative;
+}
+.container .cart i {
+  font-size: 30px;
+  color: var(--dark-color);
+  cursor: pointer;
+}
+.container .cart span {
+  position: absolute;
+  top: -20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  text-align: center;
+  line-height: 30px;
+  left: 35px;
+  font-size: 18px;
+  font-weight: 500;
+  border: 2px solid var(--border-color);
+  color: var(--dark-color);
+}
