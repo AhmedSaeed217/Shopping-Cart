@@ -5,6 +5,7 @@ function Features() {
   return (
     <div className="features">
       <div className="container">
+        <div className="feats">
         <div className="feat">
           <div className="feat-icon">
             <i class="fa-solid fa-truck"></i>
@@ -32,6 +33,8 @@ function Features() {
             <p>We reurn money within 30 days</p>
           </div>
         </div>
+        </div>
+        <hr />
       </div>
     </div>
   );
