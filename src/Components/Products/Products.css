@@ -39,16 +39,24 @@
 .products .products-container .product {
   padding: 10px 15px;
   width: 24%;
-  border: 3px solid var(--border-color);
+  border: 2px solid var(--border-color);
   border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+  height: 450px;
 }
 
 .products-container .product .product-img {
-  width: 150px;
+  width: 160px;
+  margin: 0 auto;
 }
 
 .products-container .product img {
   width: 100%;
+  mix-blend-mode: multiply;
 }
 
 .products-container .product .product-info {
@@ -82,4 +90,39 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.products .pagination {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.products .pagination span {
+  font-size: 20px;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  line-height: 35px;
+  text-align: center;
+}
+
+.products .pagination span i {
+  font-size: 35px;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  line-height: 35px;
+  text-align: center;
+  background-color: var(--border-color);
+  color: var(--main-color);
+  cursor: default;
+}
+.products .pagination span.active {
+  background-color: var(--name-item);
+  color: white;
 }

@@ -39,3 +39,18 @@ ul {
   --border-color: #6666662a;
   --name-item: #0066c0;
 }
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f5f6f9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--border-color);
+}

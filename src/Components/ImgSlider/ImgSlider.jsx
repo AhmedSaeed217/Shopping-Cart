@@ -9,12 +9,11 @@ function ImgSlider() {
   var settings = {
     dots: true,
     infinite: true,
-    speed: 300,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     accessibility: true,
     autoplay: true,
-    fade: true,
   };
 
   return (
