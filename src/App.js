@@ -4,15 +4,16 @@ import Footer from "./Components/Footer/Footer";
 import ImgSlider from "./Components/ImgSlider/ImgSlider";
 import Navbar from "./Components/Navbar/Navbar";
 import Products from "./Components/Products/Products";
+import { CartProvider } from "./Context/CartContext";
 function App() {
   return (
-    <div className="App">
+    <CartProvider>
       <Navbar />
       <ImgSlider />
       <Features />
       <Products />
-      <Footer/>
-    </div>
+      <Footer />
+    </CartProvider>
   );
 }
 
