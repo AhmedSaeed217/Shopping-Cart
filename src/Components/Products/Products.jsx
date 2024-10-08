@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Products.css";
-import axios from "axios";
-
+import { CartContext } from "../../Context/CartContext";
 function Products() {
+  const { products, addItemToCart, getCartItems } = useContext(CartContext);
+  const [quantity, setQuanitity] = useState(0);
   const [activeBullet, setActiveBullet] = useState("1");
-  const [products, setProducts] = useState([]);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(16);
-  const getProducts = () => {
-    axios.get(`http://localhost:9000/products`).then((response) => {
-      setProducts(response.data);
-    });
-  };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
-
+  // const handleAddItem = (product) => {
+  //   addItemToCart(product);
+  // };
   return (
     <div className="products">
       <div className="container">
@@ -28,7 +22,14 @@ function Products() {
         <div className="products-container">
           {products
             .map((p) => (
-              <div className="product">
+              <div key={p.id} className="product">
+                {p.isTrending ? (
+                  <div className="product-trend">
+                    <span>Trending</span>
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className="product-img">
                   <img src={p.img} alt="" />
                 </div>
@@ -37,9 +38,30 @@ function Products() {
                   <p className="spec">{p.description.slice(0, 42)}...</p>
                   <span className="price">{p.price}$</span>
                 </div>
-                <div className="add-cart">
-                  <button>Add To Cart</button>
-                </div>
+                {quantity === 0 ? (
+                  <div className="add-cart">
+                    <button
+                      onClick={() => {
+                        addItemToCart(p.id);
+                        console.log(getCartItems());
+                      }}
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
+                ) : (
+                  <div className="add-custom">
+                    <i
+                      onClick={() => setQuanitity(quantity + 1)}
+                      className="fa-solid fa-plus"
+                    ></i>
+                    <span>{quantity}</span>
+                    <i
+                      onClick={() => setQuanitity(quantity - 1)}
+                      className="fa-solid fa-minus"
+                    ></i>
+                  </div>
+                )}
               </div>
             ))
             .slice(start, end)}
