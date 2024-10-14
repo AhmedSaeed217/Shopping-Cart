@@ -34,6 +34,28 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const deleteCartItem = (id) => {
+    setCartItems((prevItems) => {
+      const existingItemIndex = prevItems.findIndex((item) => item.id === id);
+
+      if (existingItemIndex >= 0) {
+        const updatedItems = [...prevItems];
+
+        // Decrement the quantity
+        updatedItems[existingItemIndex].quantity -= 1;
+
+        // If quantity reaches zero, remove the item
+        if (updatedItems[existingItemIndex].quantity <= 0) {
+          return updatedItems.filter((item) => item.id !== id);
+        }
+
+        return updatedItems; // Return updated items with decremented quantity
+      }
+
+      return prevItems; // If item does not exist, return unchanged
+    });
+  };
+
   const getCartItems = () => {
     return cartItems;
   };
@@ -44,7 +66,13 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ products, addItemToCart, getCartItems, cartItems }}
+      value={{
+        products,
+        addItemToCart,
+        getCartItems,
+        cartItems,
+        deleteCartItem,
+      }}
     >
       {children}
     </CartContext.Provider>
