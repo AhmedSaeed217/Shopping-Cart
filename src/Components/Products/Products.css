@@ -82,6 +82,7 @@
 .product .product-info .model {
   font-size: 20px;
   font-weight: 500;
+  text-decoration: underline;
 }
 
 .product .product-info .spec {

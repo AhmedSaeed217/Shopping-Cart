@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import "./Products.css";
 import { CartContext } from "../../Context/CartContext";
+import { Link } from "react-router-dom";
+import Spinner from "../Spinner/Spinner";
 function Products() {
-  const { products, addItemToCart, getCartItems } = useContext(CartContext);
-  const [quantity, setQuanitity] = useState(0);
+  const { products, addItemToCart, getCartItems, cartItems } =
+    useContext(CartContext);
   const [activeBullet, setActiveBullet] = useState("1");
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(16);
-
   // const handleAddItem = (product) => {
   //   addItemToCart(product);
   // };
@@ -20,56 +22,51 @@ function Products() {
         </div>
 
         <div className="products-container">
-          {products
-            .map((p) => (
-              <div key={p.id} className="product">
-                {p.isTrending ? (
-                  <div className="product-trend">
-                    <span>Trending</span>
+          {products.length === 0 ? (
+            <Spinner />
+          ) : (
+            products
+              .map((p, index) => (
+                <div className="product" key={p.id}>
+                  {p.isTrending ? (
+                    <div className="product-trend">
+                      <span>Trending</span>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  <div className="product-img">
+                    <img src={p.img} alt="" />
                   </div>
-                ) : (
-                  ""
-                )}
-                <div className="product-img">
-                  <img src={p.img} alt="" />
-                </div>
-                <div className="product-info">
-                  <p className="model">{p.model}</p>
-                  <p className="spec">{p.description.slice(0, 42)}...</p>
-                  <span className="price">{p.price}$</span>
-                </div>
-                {quantity === 0 ? (
+                  <div className="product-info">
+                    <Link to={`/products/${p.id}`}>
+                      <p className="model">{p.model}</p>
+                    </Link>
+                    <p className="spec">{p.description.slice(0, 42)}...</p>
+                    <span className="price">{p.price}$</span>
+                  </div>
+
                   <div className="add-cart">
                     <button
                       onClick={() => {
                         addItemToCart(p.id);
-                        console.log(getCartItems());
+                        toast.success("The Product is added Successfully", {
+                          position: "top-center",
+                        });
                       }}
                     >
                       Add To Cart
                     </button>
                   </div>
-                ) : (
-                  <div className="add-custom">
-                    <i
-                      onClick={() => setQuanitity(quantity + 1)}
-                      className="fa-solid fa-plus"
-                    ></i>
-                    <span>{quantity}</span>
-                    <i
-                      onClick={() => setQuanitity(quantity - 1)}
-                      className="fa-solid fa-minus"
-                    ></i>
-                  </div>
-                )}
-              </div>
-            ))
-            .slice(start, end)}
+                </div>
+              ))
+              .slice(start, end)
+          )}
         </div>
 
         <div className="pagination">
           <span>
-            <i class="fa-solid fa-caret-left"></i>
+            <i className="fa-solid fa-caret-left"></i>
           </span>
           <span
             onClick={() => {
@@ -112,7 +109,7 @@ function Products() {
             4
           </span>
           <span>
-            <i class="fa-solid fa-caret-right"></i>
+            <i className="fa-solid fa-caret-right"></i>
           </span>
         </div>
       </div>
