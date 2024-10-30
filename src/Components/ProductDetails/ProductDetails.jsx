@@ -57,17 +57,13 @@ function ProductDetails() {
                   </p>
 
                   <p>
-                    Space: <span>{productDetails?.space}</span>
+                    Stock: <span>{productDetails?.count} Items In Stock</span>
                   </p>
 
-                  <p>
-                    Camera: <span>{productDetails?.camera}</span>
-                  </p>
+                  
 
-                  <p>
-                    Battery: <span>{productDetails?.battery}</span>
-                  </p>
-                  <p className="description">{productDetails?.description}</p>
+                  
+                  <p className="description">{productDetails?.description}.</p>
                 </div>
                 <div className="delivery-terms">
                   <div className="delivery">
