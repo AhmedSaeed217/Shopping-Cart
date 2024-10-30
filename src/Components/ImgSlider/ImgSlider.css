@@ -1,4 +1,4 @@
-.slider {
+/* .slider {
   margin-top: 15px;
   overflow: hidden;
 }
@@ -10,4 +10,31 @@
   height: 80%;
   object-fit: cover;
   /* border-radius: 30px; */
+
+.hero{
+  background-image: url("../../assets/images/slider2.jpg") !important;
+  background-size: cover;
+  background-position: center center;
+  height: calc(100vh - 66px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero .container{
+padding: 15px;
+}
+.hero .container h2{
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  color: var(--dark-red);
+
+}
+
+.hero .container p{
+  width: 800px;
+  font-size: 22px;
+  color: white;
 }
