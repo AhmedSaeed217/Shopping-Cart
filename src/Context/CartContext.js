@@ -7,7 +7,7 @@ export const CartProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const getProducts = () => {
-    axios.get(`http://localhost:9000/products`).then((response) => {
+    axios.get(`https://cartdata-jux3.onrender.com/products`).then((response) => {
       setProducts(response.data);
     });
   };
